@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework-Portal</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Sean's Homework submission website</h1>
+        <nav>
+            <ul>
+                <li><a href="./views/login.html">Login</a></li>
+                <li><a href="./views/register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+
+    <main>
+
+
+        <section>
+            <h2>About this application</h2>
+
+            <p>This application allows students and teachers to interact with homework assignments efficiently. Students can submit their homework, and teachers can review and grade submissions online.</p>
+        </section>
+
+
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li>Secure Login and User Management</li>
+                <li>Assignment Creation and Submission</li>
+                <li>Real-time Notifications</li>
+                <li>Feedback and Grading System</li>
+            </ul>
+        </section>
+
+
+        <h3>Upload a file</h3>
+
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Upload</button>
+        </form>
+
+
+
+        <h3>Download a file</h3>
+        <a href="download.html">Click here to go to file downloads</a>
+
+
+    </main>
+
+
+    <footer>
+        <p>Copyright © 2024. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

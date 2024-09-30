@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Files</title>
+</head>
+<body>
+    <h1>Download File</h1>
+
+
+    <a href="index.html">Back to Homepage</a>
+
+    <input type="text" id="fileId" placeholder="Enter File ID">
+    <button onclick="downloadFile()">Download</button>
+
+
+
+    <h1>Available Files</h1>
+    <ul id="fileList"></ul>
+
+    <script>
+        function downloadFile() {
+            const fileId = document.getElementById('fileId').value;
+            if (!fileId) {
+                alert('Please enter a file ID');
+                return;
+            }
+            // Trigger the download
+            window.location.href = `/download/${fileId}`;
+        }
+
+
+
+        async function fetchFiles() {
+            try {
+                const response = await fetch('/files');
+                const files = await response.json();
+                const list = document.getElementById('fileList');
+                files.forEach(file => {
+                    const item = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = `/download/${file._id}`;
+                    link.textContent = file.fileName + ' ' + file._id;
+                    link.download = file.fileName; // Suggests a filename for download
+
+                    item.appendChild(link);
+                    list.appendChild(item);
+                });
+                    
+            
+            } catch (error) {
+                console.error('Failed to fetch files: ', error);
+            }
+        }
+
+        fetchFiles();
+    </script>
+</body>
+</html>
