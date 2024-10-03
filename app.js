@@ -192,6 +192,7 @@ app.post('/logout', (req, res) => {
         if (err) {
             return res.status(500).send('Failed to logout');
         }
+        res.clearCookie('username')
         res.redirect('/');
     });
 });
@@ -245,15 +246,33 @@ app.get('/download/:id', async (req, res) => {
 
 // Route to get a list of files
 app.get('/files', async (req, res) => {
+
+
+    if (req.session.username != 'admin') {
+        try {
+            const files = await UploadedFile.find({ username: req.session.username }, 'fileName username _id').lean();
+            res.json(files);
+        } catch (error) {
+            console.error('Failed to retrieve files:', error);
+            res.status(500).send('Error fetching file list');
+        }
+
+    } else {
+
+
+        try {
+            const files = await UploadedFile.find({}, 'fileName username _id').lean();
+            res.json(files);
+        } catch (error) {
+            console.error('Failed to retrieve files:', error);
+            res.status(500).send('Error fetching file list');
+        }
+
+
+    }
     
 
-    try {
-        const files = await UploadedFile.find({}, 'fileName username _id').lean();
-        res.json(files);
-    } catch (error) {
-        console.error('Failed to retrieve files:', error);
-        res.status(500).send('Error fetching file list');
-    }
+    
 
 });
 

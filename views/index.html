@@ -20,7 +20,9 @@
                 <li><a href="./login.html" id="loginLink">Login</a></li>
                 <li><a href="./signup.html" id="signupLink">Sign up</a></li>
             </ul>
+            
 
+            <button id="logoutButton">Logout</button>
 
             <h2 id="userGreeting">Welcome</h2>
         </nav>
@@ -116,5 +118,21 @@
             document.getElementById('userGreeting').style.display = 'none';
         }
     });
+
+
+
+    document.getElementById('logoutButton').addEventListener('click', function() {
+
+        fetch('/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Logout successful', data);
+        })
+    })
 </script>
 </html>

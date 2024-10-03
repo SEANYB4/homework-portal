@@ -280,6 +280,7 @@ section {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: center;
         border-radius: 20px;
         font-size: x-large;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
