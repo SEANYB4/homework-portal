@@ -9,13 +9,10 @@
 <body>
     <h1>Download File</h1>
 
-
     <a href="index.html">Back to Homepage</a>
 
     <input type="text" id="fileId" placeholder="Enter File ID">
     <button onclick="downloadFile()">Download</button>
-
-
 
     <h1>Available Files</h1>
     <ul id="fileList"></ul>
@@ -30,8 +27,6 @@
             // Trigger the download
             window.location.href = `/download/${fileId}`;
         }
-
-
 
         async function fetchFiles() {
             try {
@@ -48,8 +43,7 @@
                     item.appendChild(link);
                     list.appendChild(item);
                 });
-                    
-            
+                                
             } catch (error) {
                 console.error('Failed to fetch files: ', error);
             }

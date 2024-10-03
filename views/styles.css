@@ -2,9 +2,24 @@ body {
     font-family: Arial, sans-serif;
 }
 
+
+main {
+
+    display: flex;
+    flex-direction: row;
+}
+
 header, nav, main, footer {
     padding: 20px;
     text-align: center;
+}
+
+
+nav {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 nav ul {
@@ -15,7 +30,72 @@ nav ul {
 nav ul li {
     display: inline;
     margin-right: 10px;
+    background-color: rgb(50, 50, 200);
+    padding: 1rem;
+    
 }
+
+li a {
+
+    color: antiquewhite;
+
+}
+
+
+.file_download {
+
+    background-color: aqua;
+    color: aliceblue;
+    width: 33%;
+    
+
+    padding: 20px;
+}
+
+
+.file_upload {
+
+    background-color: orangered;
+    color: aliceblue;
+    width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+
+   
+
+    padding: 20px;
+}
+
+section {
+
+
+    border: 3px solid black;
+    margin: 1rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    width: 33%;
+
+}
+
+
+.hoverable:hover {
+
+    transform: translateY(-10px);
+}
+
+
+
+#image_gallery {
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
 
 @media (max-width: 600px) {
     nav ul li {

@@ -11,9 +11,12 @@
         <h1>Welcome to Sean's Homework submission website</h1>
         <nav>
             <ul>
-                <li><a href="./views/login.html">Login</a></li>
-                <li><a href="./views/register.html">Register</a></li>
+                <li><a href="./login.html" id="loginLink">Login</a></li>
+                <li><a href="./signup.html" id="signupLink">Sign up</a></li>
             </ul>
+
+
+            <h2 id="userGreeting">Welcome</h2>
         </nav>
     </header>
     
@@ -22,14 +25,11 @@
     <main>
 
 
-        <section>
+        <section class="hoverable">
             <h2>About this application</h2>
 
             <p>This application allows students and teachers to interact with homework assignments efficiently. Students can submit their homework, and teachers can review and grade submissions online.</p>
-        </section>
 
-
-        <section>
             <h2>Features</h2>
             <ul>
                 <li>Secure Login and User Management</li>
@@ -40,17 +40,35 @@
         </section>
 
 
-        <h3>Upload a file</h3>
-
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" required>
-            <button type="submit">Upload</button>
-        </form>
+       
 
 
+        <section class="file_upload hoverable">
+            <h3>Upload a file</h3>
 
-        <h3>Download a file</h3>
-        <a href="download.html">Click here to go to file downloads</a>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <button type="submit">Upload</button>
+            </form>
+
+
+        </section>
+
+       
+
+        <section class="file_download hoverable">
+
+            <h3>Download a file</h3>
+            <a href="download.html">Click here to go to file downloads</a>
+
+        </section>
+
+
+
+        <div id="image_gallery">
+            <img src="./images/image1.png" alt="student studying 1">
+            <img src="./images/image2.png" alt="student studying 2">
+        </div>
 
 
     </main>
@@ -61,4 +79,31 @@
     </footer>
 
 </body>
+
+<script>
+    function getCookie(name) {
+
+        let cookie = {};
+        document.cookie.split(';').forEach(function(el) {
+            let [key, value] = el.split('=');
+            cookie[key.trim()] = value;
+        });
+        return cookie[name];
+    }
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const username = getCookie('username');
+        if (username) {
+
+            document.getElementById('userGreeting').textContent = `Welcome, ${username}!`;
+            document.getElementById('loginLink').style.display = 'none';
+            document.getElementById('signupLink').style.display = 'none';
+        } else {
+            document.getElementById('userGreeting').style.display = 'none';
+        }
+    });
+</script>
 </html>
