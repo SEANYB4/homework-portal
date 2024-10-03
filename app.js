@@ -194,6 +194,8 @@ app.post('/logout', (req, res) => {
         }
         res.clearCookie('username')
         res.redirect('/');
+
+        
     });
 });
 

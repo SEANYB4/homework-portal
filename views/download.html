@@ -11,12 +11,12 @@
 
     <a href="index.html">Back to Homepage</a>
 
-    <input type="text" id="fileId" placeholder="Enter File ID">
-    <button onclick="downloadFile()">Download</button>
+    <!-- <input type="text" id="fileId" placeholder="Enter File ID">
+    <button onclick="downloadFile()">Download</button> -->
 
 
     <section>
-        <h1>Available Files</h1>
+        <h1 id="heading">Available Files</h1>
 
         <div class="fileListHeadings">
             <h3>File Name</h3>
@@ -28,6 +28,30 @@
     
 
     <script>
+
+        function getCookie(name) {
+
+        let cookie = {};
+        document.cookie.split(';').forEach(function(el) {
+            let [key, value] = el.split('=');
+            cookie[key.trim()] = value;
+        });
+        return cookie[name];
+        }
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+        const username = getCookie('username');
+        if (username) {
+
+            document.getElementById('heading').textContent = `Available Files for ${username}:`;
+            
+        } 
+        });
+
+
         function downloadFile() {
             const fileId = document.getElementById('fileId').value;
             if (!fileId) {
@@ -47,10 +71,20 @@
                     const item = document.createElement('li');
                     const link = document.createElement('a');
                     link.href = `/download/${file._id}`;
-                    link.textContent = file.fileName + ' ' + file.username + ' ' + file._id;
+                    link.textContent = file.fileName;
                     link.download = file.fileName; // Suggests a filename for download
 
+
+
+                    const username_element = document.createElement('p');
+                    username_element.textContent = file.username;
+
+                    const id_element = document.createElement('p');
+                    id_element.textContent = file._id;
+
                     item.appendChild(link);
+                    item.appendChild(username_element);
+                    item.appendChild(id_element);
                     list.appendChild(item);
                 });
                                 

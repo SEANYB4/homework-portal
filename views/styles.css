@@ -138,6 +138,15 @@ section {
     border-radius: 20px;
     font-size: x-large;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+}
+
+
+#title {
+
+
+
+    text-align: right;
 }
 
 

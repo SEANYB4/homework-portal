@@ -1,3 +1,13 @@
+body {
+
+    font-family: monospace, sans-serif;
+
+    background-color: #CBEEF4;
+}
+
+
+
+
 section {
 
     background-color: tomato;
@@ -9,6 +19,14 @@ section {
 
 .fileListHeadings {
 
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+li {
 
     display: flex;
     flex-direction: row;

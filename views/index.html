@@ -11,18 +11,23 @@
 
         <div id="logo_bar">
             <img src="logo.png" alt="logo" class="image2">
-            <h1>Welcome to Sean's Homework submission website</h1>  
+            <div id="title">
+                <h1>Sean's Homework Submission Portal</h1> 
+                <h2>作业提交门户</h2> 
+
+            </div>
+            
             
         </div>
        
         <nav>
             <ul>
-                <li><a href="./login.html" id="loginLink">Login</a></li>
-                <li><a href="./signup.html" id="signupLink">Sign up</a></li>
+                <li id="loginLink"><a href="./login.html" >Login 登录</a></li>
+                <li id="signupLink"><a href="./signup.html" >Sign up</a></li>
+                <li id="logoutButton">Logout</li>
             </ul>
             
 
-            <button id="logoutButton">Logout</button>
 
             <h2 id="userGreeting">Welcome</h2>
         </nav>
@@ -37,15 +42,14 @@
             <section class="hoverable">
                 <h2>About this application</h2>
     
-                <p>This application allows students and teachers to interact with homework assignments efficiently. Students can submit their homework, and teachers can review and grade submissions online.</p>
+                <p>Use this website to upload files due for submission for my classes.</p>
+                <p>I will check who has uploaded the files at the deadline and then download the files that have been submitted for marking.</p>
+                <p>If you have any questions about using the site please contact me on Wechat or by email.</p>
+                <p>Thanks</p>
     
-                <h2>Features</h2>
-                <ul>
-                    <li>Secure Login and User Management</li>
-                    <li>Assignment Creation and Submission</li>
-                    <li>Real-time Notifications</li>
-                    <li>Feedback and Grading System</li>
-                </ul>
+
+                <p>PLEASE NAME ALL YOUR UPLOADED FILES WITH YOUR STUDENT NUMBER!!!</p>
+                
             </section>
     
     
@@ -54,11 +58,8 @@
     
             <section class="file_upload hoverable">
                 <h3>Upload a file</h3>
-    
-                <form action="/upload" method="post" enctype="multipart/form-data">
-                    <input type="file" name="file" required>
-                    <button type="submit">Upload</button>
-                </form>
+                <h4>上传文件</h4>
+                <a href="upload.html">Click here to upload a file</a>
     
     
             </section>
@@ -128,11 +129,23 @@
             headers: {
                 'Content-Type': 'application/json',
             }
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Logout successful', data);
-        })
-    })
+        }).then(response => {
+            if (response.ok) {
+                // Clear any client-side storage or cookies if needed
+                document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                // Update the DOM
+                document.getElementById('userGreeting').style.display = 'none';
+                document.getElementById('loginLink').style.display = 'block';
+                document.getElementById('signupLink').style.display = 'block';
+                document.getElementById('logoutButton').style.display = 'none';
+                alert('You have been logged out.'); // Optional: confirm logout
+            } else {
+                alert('Logout failed. Please try again.');
+            }
+        }).catch(error => {
+            console.error('Logout error:', error);
+            alert('Logout failed. Please try again.');
+        });
+    });
 </script>
 </html>
