@@ -1,0 +1,16 @@
+section {
+
+    background-color: tomato;
+
+    color: aliceblue;
+}
+
+
+
+.fileListHeadings {
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

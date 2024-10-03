@@ -8,7 +8,13 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to Sean's Homework submission website</h1>
+
+        <div id="logo_bar">
+            <img src="logo.png" alt="logo" class="image2">
+            <h1>Welcome to Sean's Homework submission website</h1>  
+            
+        </div>
+       
         <nav>
             <ul>
                 <li><a href="./login.html" id="loginLink">Login</a></li>
@@ -25,49 +31,54 @@
     <main>
 
 
-        <section class="hoverable">
-            <h2>About this application</h2>
+        <div id="sections">
+            <section class="hoverable">
+                <h2>About this application</h2>
+    
+                <p>This application allows students and teachers to interact with homework assignments efficiently. Students can submit their homework, and teachers can review and grade submissions online.</p>
+    
+                <h2>Features</h2>
+                <ul>
+                    <li>Secure Login and User Management</li>
+                    <li>Assignment Creation and Submission</li>
+                    <li>Real-time Notifications</li>
+                    <li>Feedback and Grading System</li>
+                </ul>
+            </section>
+    
+    
+           
+    
+    
+            <section class="file_upload hoverable">
+                <h3>Upload a file</h3>
+    
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" required>
+                    <button type="submit">Upload</button>
+                </form>
+    
+    
+            </section>
+    
+           
+    
+            <section class="file_download hoverable">
+    
+                <h3>Download a file</h3>
+                <a href="download.html">Click here to go to file downloads</a>
+    
+            </section>
 
-            <p>This application allows students and teachers to interact with homework assignments efficiently. Students can submit their homework, and teachers can review and grade submissions online.</p>
-
-            <h2>Features</h2>
-            <ul>
-                <li>Secure Login and User Management</li>
-                <li>Assignment Creation and Submission</li>
-                <li>Real-time Notifications</li>
-                <li>Feedback and Grading System</li>
-            </ul>
-        </section>
-
+        </div>
 
        
-
-
-        <section class="file_upload hoverable">
-            <h3>Upload a file</h3>
-
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <input type="file" name="file" required>
-                <button type="submit">Upload</button>
-            </form>
-
-
-        </section>
-
-       
-
-        <section class="file_download hoverable">
-
-            <h3>Download a file</h3>
-            <a href="download.html">Click here to go to file downloads</a>
-
-        </section>
 
 
 
         <div id="image_gallery">
-            <img src="./images/image1.png" alt="student studying 1">
-            <img src="./images/image2.png" alt="student studying 2">
+            <img src="./image1.png" alt="student studying 1" class="image1">
+            <img src="./image2.png" alt="student studying 2" class="image1">
         </div>
 
 

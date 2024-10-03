@@ -59,7 +59,8 @@ const fileSchema = new mongoose.Schema({
     fileContent: Buffer,
     contentType: String,
     fileName: String,
-    metaData: Object
+    metaData: Object,
+    username: String
 }, { collection: 'files' }); 
 
 
@@ -198,7 +199,7 @@ app.post('/logout', (req, res) => {
 
 
 
-app.post('/upload', upload.single('file'), (req, res) => {
+app.post('/upload', requireLogin, upload.single('file'), (req, res) => {
 
     const file = req.file;
     const meta = req.body;
@@ -208,7 +209,8 @@ app.post('/upload', upload.single('file'), (req, res) => {
         fileContent: file.buffer,
         contentType: file.mimetype,
         fileName: file.originalname,
-        metaData: meta
+        metaData: meta,
+        username: req.session.username
     });
 
 
@@ -246,7 +248,7 @@ app.get('/files', async (req, res) => {
     
 
     try {
-        const files = await UploadedFile.find({}, 'fileName _id').lean();
+        const files = await UploadedFile.find({}, 'fileName username _id').lean();
         res.json(files);
     } catch (error) {
         console.error('Failed to retrieve files:', error);

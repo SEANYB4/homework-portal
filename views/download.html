@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Files</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles2.css">
 </head>
 <body>
     <h1>Download File</h1>
@@ -14,8 +14,18 @@
     <input type="text" id="fileId" placeholder="Enter File ID">
     <button onclick="downloadFile()">Download</button>
 
-    <h1>Available Files</h1>
-    <ul id="fileList"></ul>
+
+    <section>
+        <h1>Available Files</h1>
+
+        <div class="fileListHeadings">
+            <h3>File Name</h3>
+            <h3>User</h3>
+            <h3>File ID</h3>
+        </div>
+        <ul id="fileList"></ul>
+    </section>
+    
 
     <script>
         function downloadFile() {
@@ -37,7 +47,7 @@
                     const item = document.createElement('li');
                     const link = document.createElement('a');
                     link.href = `/download/${file._id}`;
-                    link.textContent = file.fileName + ' ' + file._id;
+                    link.textContent = file.fileName + ' ' + file.username + ' ' + file._id;
                     link.download = file.fileName; // Suggests a filename for download
 
                     item.appendChild(link);
