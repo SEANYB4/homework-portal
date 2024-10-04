@@ -23,8 +23,8 @@
         <nav>
             <ul>
                 <li id="loginLink"><a href="./login.html" >Login 登录</a></li>
-                <li id="signupLink"><a href="./signup.html" >Sign up</a></li>
-                <li id="logoutButton">Logout</li>
+                <li id="signupLink"><a href="./signup.html" >Sign up 下载文件</a></li>
+                <li id="logoutButton">Logout 注销</li>
             </ul>
             
 
@@ -41,11 +41,15 @@
         <div id="sections">
             <section class="hoverable">
                 <h2>About this application</h2>
+                <h3>关于此应用程序</h3>
     
                 <p>Use this website to upload files due for submission for my classes.</p>
-                <p>I will check who has uploaded the files at the deadline and then download the files that have been submitted for marking.</p>
                 <p>If you have any questions about using the site please contact me on Wechat or by email.</p>
                 <p>Thanks</p>
+
+                <p>使用此网站上传我的课程应提交的文件。</p>
+                <p>如果您对使用本网站有任何疑问，请通过微信或电子邮件与我联系。</p>
+                <p>谢谢</p>
     
 
                 <p>PLEASE NAME ALL YOUR UPLOADED FILES WITH YOUR STUDENT NUMBER!!!</p>
@@ -69,6 +73,7 @@
             <section class="file_download hoverable">
     
                 <h3>Download a file</h3>
+                <h4>下载文件</h4>
                 <a href="download.html">Click here to go to file downloads</a>
     
             </section>
@@ -115,8 +120,10 @@
             document.getElementById('userGreeting').textContent = `Welcome, ${username}!`;
             document.getElementById('loginLink').style.display = 'none';
             document.getElementById('signupLink').style.display = 'none';
+
         } else {
             document.getElementById('userGreeting').style.display = 'none';
+            document.getElementById('logoutButton').style.display = 'none';
         }
     });
 

@@ -12,7 +12,7 @@ main {
     justify-content: space-around;
 }
 
-header, nav, main, footer {
+footer {
     padding: 20px;
     text-align: center;
 }
@@ -147,6 +147,15 @@ section {
 
 
     text-align: right;
+}
+
+
+
+#logoutButton {
+
+    color: aliceblue;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 
