@@ -9,7 +9,7 @@ const session = require('express-session');
 
 const MongoDBStore = require('connect-mongodb-session')(session);
 
-const MongoClient = require('mongodb').MongoClient;
+
 
 const multer = require('multer');
 const bodyParser = require('body-parser');
