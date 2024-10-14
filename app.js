@@ -53,6 +53,8 @@ app.use(session({
     }
 }));
 
+// Middleware to parse JSON bodies
+app.use(express.json());
 
 
 const fileSchema = new mongoose.Schema({
@@ -81,7 +83,7 @@ const User = mongoose.model('User', userSchema);
 
 
 
-
+const quizAnswers = { q1: 'A', q2: 'A', q3: 'A', q4: 'A', q5: 'A', q6: 'A', q7: 'A', q8: 'A', q9: 'A', q10: 'C'};
 
 
 
@@ -261,7 +263,6 @@ app.get('/files', async (req, res) => {
 
     } else {
 
-
         try {
             const files = await UploadedFile.find({}, 'fileName username _id').lean();
             res.json(files);
@@ -269,13 +270,21 @@ app.get('/files', async (req, res) => {
             console.error('Failed to retrieve files:', error);
             res.status(500).send('Error fetching file list');
         }
-
-
     }
-    
 
-    
+});
 
+
+app.post('/submit-quiz', (req, res) => {
+    const responses = req.body;
+    let score = 0;
+    Object.keys(responses).forEach(question => {
+        if (responses[question] === quizAnswers[question]) {
+            score += 1;
+        }
+    });
+    res.json({ score: score });
+    
 });
 
 
